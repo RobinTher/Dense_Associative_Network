@@ -6,4 +6,4 @@ Figures were originally made using python 3.8.5 with numpy 1.24.4, matplotlib 3.
 
 Follow the instructions here https://jax.readthedocs.io/en/latest/installation.html to install jax
 
-It takes a few days to run the Monte-Carlo simulations on a GPU.
+It should take a few days to run each Monte-Carlo simulation cell on a GPU.
