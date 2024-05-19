@@ -82,6 +82,24 @@ def plot_phase(phases, n_beta, n_alpha, alpha_range, T_range, p = None,
         colorbar = plt.colorbar(ticks = [0.125, 0.375, 0.625, 0.875], drawedges = True)
         colorbar.ax.set_yticklabels([r"$eR$", r"$gR$", r"$lR$", r"$P$"], fontsize = fontsize)
         plt.contour(phases, colors = "black")
+        if p == 3:
+            
+            alpha_line = np.arange(0, n_alpha)
+            
+            plt.plot(alpha_line, n_beta/T_max * 0.238*np.sqrt(2 * alpha_max*alpha_line/n_alpha), color = "white", linewidth = 2)
+            
+            # Hardcoded
+            n_alpha_gaussian = 10
+            alpha_line_1 = np.arange(0, n_alpha - 1, n_alpha//n_alpha_gaussian)
+            alpha_line_2 = np.arange(n_alpha//n_alpha_gaussian//2, n_alpha - 1, n_alpha//n_alpha_gaussian) 
+            
+            plt.plot(alpha_line_1, n_beta/T_max * 0.652*np.sqrt(2 * alpha_max*alpha_line_1/n_alpha), color = "white",
+                     linestyle = "None", marker = "d", markersize = 6)
+            plt.plot(alpha_line_2, n_beta/T_max * 0.682*np.sqrt(2 * alpha_max*alpha_line_2/n_alpha), color = "white",
+                     linestyle = "None", marker = "d", markersize = 6)
+            
+            plt.xlim(0, n_alpha-1)
+            plt.ylim(1, n_beta)
     elif model == "inverse_fixed_T_s":
         colorbar = plt.colorbar(ticks = [0.1, 0.3, 0.5, 0.7, 0.9], drawedges = True)
         colorbar.ax.set_yticklabels([r"$eR$", r"$gR$", r"$lR$", r"$SG$", r"$P$"], fontsize = fontsize)
